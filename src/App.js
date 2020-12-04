@@ -1,41 +1,30 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Navbar, Nav } from 'react-bootstrap'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Login from './components/Login';
-
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Sidebar from './components/Sidebar'
+import Home from './components/Home'
+import { Row, Col, Container } from 'react-bootstrap';
 function App() {
 
-  var location = window.location.href;
-  var loginClass = location.includes("/login") ? "nav-item active" : "nav-item";
-
   return (
-    <Router>
-      <Container fluid >
-        <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="#home">
-            <img
-              alt=""
-              src="https://i.pinimg.com/originals/3f/3d/d9/3f3dd9219f7bb1c9617cf4f154b70383.jpg"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />{' '}
-            React Bootstrap
-          </Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-          </Nav>
-          <Nav>
-            <Nav.Link className={loginClass} href="/login">Login</Nav.Link>
-          </Nav>
-        </Navbar>
-        <br></br>
-        <Switch>
-          <Route exact path='/login' component={Login} />
-        </Switch>
-      </Container>
-    </Router>
+    <div>
+      <Header />
+      <br></br>
+      <br></br>
+      <Row>
+        <Col xs={2}>
+          <Sidebar />
+        </Col>
+        {/* <Col xs={1}>
+
+        </Col> */}
+        <Col xs={10}>
+          <Home />
+        </Col>
+      </Row>
+      {/* <Footer /> */}
+    </div >
   );
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Button, Form, Row, Col, Image, Container, Toast, Spinner } from 'react-bootstrap'
+import { Card, Button, Form, Row, Col, Image, Container, Toast, Spinner, Jumbotron } from 'react-bootstrap'
 import { CheckSquareFill } from 'react-bootstrap-icons';
 
 export default function Login() {
@@ -17,10 +17,9 @@ export default function Login() {
     }
 
     return (
-        <Container fluid="xl">
+        <Jumbotron style={{ backgroundColor: 'white', height: '100%' }} >
             <Card
                 bg="light"
-                key=""
                 text="dark"
             >
                 <Card.Header className="text-center">LOGIN</Card.Header>
@@ -60,6 +59,6 @@ export default function Login() {
             </div>
             <div className={blockScreen} width="100%"></div>
             {spinnerDisable ? <Spinner as="span" animation="border" size="lg" role="status" aria-hidden="true" style={{ "position": "fixed", "top": "50%", "left": "50%" }} /> : null}
-        </Container>
+        </Jumbotron>
     );
 }
