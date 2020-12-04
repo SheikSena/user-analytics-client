@@ -1,24 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Navbar, Nav } from 'react-bootstrap'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Login from './components/Login';
 
 function App() {
+
+  var location = window.location.href;
+  var loginClass = location.includes("/login") ? "nav-item active" : "nav-item";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Container fluid >
+        <Navbar bg="dark" variant="dark">
+          <Navbar.Brand href="#home">
+            <img
+              alt=""
+              src="https://i.pinimg.com/originals/3f/3d/d9/3f3dd9219f7bb1c9617cf4f154b70383.jpg"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />{' '}
+            React Bootstrap
+          </Navbar.Brand>
+          <Nav className="mr-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link className={loginClass} href="/login">Login</Nav.Link>
+          </Nav>
+        </Navbar>
+        <br></br>
+        <Switch>
+          <Route exact path='/login' component={Login} />
+        </Switch>
+      </Container>
+    </Router>
   );
 }
 
