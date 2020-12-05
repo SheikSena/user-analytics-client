@@ -77,3 +77,10 @@ body, html {
   width: 100%;
   border-collapse: collapse;
 }
+
+.mainDivComponent {
+  background-color: 'white';
+  height: '100%';
+  padding-top: '10px';
+  padding-right: '10px'
+}

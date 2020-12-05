@@ -34,15 +34,6 @@ function Sidebar() {
                         <MenuItem></MenuItem>
                         <MenuItem></MenuItem>
                         <MenuItem></MenuItem>
-                        <MenuItem></MenuItem>
-                        <MenuItem></MenuItem>
-                        <MenuItem></MenuItem>
-                        <MenuItem></MenuItem>
-                        <MenuItem></MenuItem>
-                        <MenuItem></MenuItem>
-                        <MenuItem></MenuItem>
-                        <MenuItem></MenuItem>
-                        <MenuItem></MenuItem>
                     </Menu>
                 </SidebarContent>
             </ProSidebar>

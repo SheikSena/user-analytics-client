@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Button, Form, Row, Col, Image, Toast, Spinner, } from 'react-bootstrap'
+import { Card, Button, Form, Row, Col, Image, Toast, Spinner, Breadcrumb } from 'react-bootstrap'
 import { CheckSquareFill } from 'react-bootstrap-icons';
 
 export default function Login() {
@@ -17,11 +17,12 @@ export default function Login() {
     }
 
     return (
-        <div style={{ backgroundColor: 'white', height: 100 }} >
-            <Card
-                bg="light"
-                text="dark"
-            >
+        <div style={{ backgroundColor: 'white', height: '100%', paddingTop: '10px', paddingRight: '10px' }}>
+            <Breadcrumb>
+                <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+                <Breadcrumb.Item active>Login</Breadcrumb.Item>
+            </Breadcrumb>
+            <Card bg="light" text="dark">
                 <Card.Header className="text-center">LOGIN</Card.Header>
                 <Card.Body>
                     <Row>
@@ -45,7 +46,6 @@ export default function Login() {
                         </Col>
                     </Row>
                 </Card.Body>
-                <Card.Footer className="text-muted">2 days ago</Card.Footer>
             </Card>
             <div style={{ position: 'absolute', top: 60, right: 14 }} >
                 <Toast show={show} autohide onClose={() => setShow(false)} delay={5000} closeButton>
