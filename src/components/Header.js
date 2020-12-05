@@ -9,8 +9,8 @@ export default function Header() {
     var registerClass = location.includes("/register") ? "nav-item active" : "nav-item";
 
     return (
-        <div className="fixed-top">
-            <Navbar variant="dark" style={{ backgroundColor: 'black' }} fluid>
+        <div className="toppane" style={{ backgroundColor: 'black' }}>
+            <Navbar variant="dark" sticky="top">
                 <Navbar.Brand href="#home">
                     <img
                         alt=""

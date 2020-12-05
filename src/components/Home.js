@@ -7,7 +7,7 @@ import Register from './Register';
 function App() {
 
     return (
-        <div style={{ backgroundColor: 'white', overflowY: 'visible' }}>
+        <div className="rightpane">
             <Router>
                 <Switch>
                     <Route exact path='/login' component={Login} />

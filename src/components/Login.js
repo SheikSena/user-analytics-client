@@ -17,7 +17,7 @@ export default function Login() {
     }
 
     return (
-        <Jumbotron style={{ backgroundColor: 'white', height: '100%' }} >
+        <div style={{ backgroundColor: 'white', height: 100 }} >
             <Card
                 bg="light"
                 text="dark"
@@ -59,6 +59,6 @@ export default function Login() {
             </div>
             <div className={blockScreen} width="100%"></div>
             {spinnerDisable ? <Spinner as="span" animation="border" size="lg" role="status" aria-hidden="true" style={{ "position": "fixed", "top": "50%", "left": "50%" }} /> : null}
-        </Jumbotron>
+        </div>
     );
 }
