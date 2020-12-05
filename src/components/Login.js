@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Button, Form, Row, Col, Image, Container, Toast, Spinner, Jumbotron } from 'react-bootstrap'
+import { Card, Button, Form, Row, Col, Image, Toast, Spinner, } from 'react-bootstrap'
 import { CheckSquareFill } from 'react-bootstrap-icons';
 
 export default function Login() {
@@ -11,7 +11,7 @@ export default function Login() {
 
     function login() {
         setShow(true)
-        //setButtonDisable(true)
+        setButtonDisable(true)
         setSpinnerDisable(true)
         setBlockScreen("parentDisable")
     }

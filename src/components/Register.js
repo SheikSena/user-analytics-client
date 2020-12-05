@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Button, Form, Row, Col, Image, Container, Toast, Spinner, Jumbotron } from 'react-bootstrap'
+import { Card, Button, Form, Col, Toast, Spinner } from 'react-bootstrap'
 import { CheckSquareFill } from 'react-bootstrap-icons';
 
 export default function Register() {
@@ -9,7 +9,7 @@ export default function Register() {
     const [spinnerDisable, setSpinnerDisable] = useState(false);
     const [blockScreen, setBlockScreen] = useState('');
 
-    function login() {
+    function register() {
         setShow(true)
         setButtonDisable(true)
         setSpinnerDisable(true)
@@ -110,7 +110,7 @@ export default function Register() {
                                 <Form.Check type="checkbox" label="Check me out" />
                             </Form.Group>
 
-                            <Button variant="primary" type="submit">
+                            <Button variant="primary" type="submit" disabled={butttonDisable} onClick={register}>
                                 Submit
   </Button>
                         </Form>
