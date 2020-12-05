@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Button, Form, Col, Toast, Spinner, Row, Breadcrumb } from 'react-bootstrap'
+import { Card, Button, Form, Col, Toast, Spinner, Breadcrumb } from 'react-bootstrap'
 import { CheckSquareFill } from 'react-bootstrap-icons';
 
 export default function Register() {
