@@ -7,7 +7,7 @@ function Sidebar() {
 
     return (
         <div class="leftpane">
-            <ProSidebar collapsed={false}>
+            <ProSidebar collapsed={false} >
                 <SidebarContent>
                     <Menu icon={<CheckSquareFill />}>
                         <MenuItem icon={<GridFill />}> <a href="/register">Dashboard</a></MenuItem>

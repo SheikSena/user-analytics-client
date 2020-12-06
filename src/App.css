@@ -63,14 +63,16 @@ body, html {
     height: 100%;
     width: 18%;
     float: left;
-    background-color: 'black';
-    overflow-y: 'auto'; 
+    overflow: auto;
+    padding-top: 55px;
+    position: fixed;
 }
 
 .rightpane {
   width: 82%;
   height: 100%;
   float: right;
+  padding-top: 55px
 }
 
 .toppane {
