@@ -1,33 +1,42 @@
 import React from 'react';
-import { Card, Button, Nav } from 'react-bootstrap'
+import { Card, CardColumns } from 'react-bootstrap'
 
 export default function Dashboard() {
-
 
     return (
         <div style={{ backgroundColor: 'white', height: '100%', paddingTop: '10px', paddingRight: '10px' }}>
             <Card>
-                <Card.Header>
-                    <Nav variant="tabs" defaultActiveKey="#first">
-                        <Nav.Item>
-                            <Nav.Link href="#first">Active</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link href="#link">Link</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link href="#disabled" disabled>
-                                Disabled
-                        </Nav.Link>
-                        </Nav.Item>
-                    </Nav>
-                </Card.Header>
+                <Card.Header className="text-center">DASHBOARD</Card.Header>
                 <Card.Body>
-                    <Card.Title>Special title treatment</Card.Title>
-                    <Card.Text>
-                        With supporting text below as a natural lead-in to additional content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    <CardColumns>
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>Card title that wraps to a new line</Card.Title>
+                                <Card.Text>
+                                    This is a longer card with supporting text below as a natural lead-in to
+                                    additional content. This content is a little bit longer.
+                        </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>Card title that wraps to a new line</Card.Title>
+                                <Card.Text>
+                                    This is a longer card with supporting text below as a natural lead-in to
+                                    additional content. This content is a little bit longer.
+                         </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>Card title that wraps to a new line</Card.Title>
+                                <Card.Text>
+                                    This is a longer card with supporting text below as a natural lead-in to
+                                    additional content. This content is a little bit longer.
+                        </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </CardColumns>
                 </Card.Body>
             </Card>
         </div>
