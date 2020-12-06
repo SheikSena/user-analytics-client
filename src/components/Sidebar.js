@@ -10,7 +10,7 @@ function Sidebar() {
             <ProSidebar collapsed={false} >
                 <SidebarContent>
                     <Menu icon={<CheckSquareFill />}>
-                        <MenuItem icon={<GridFill />}> <a href="/register">Dashboard</a></MenuItem>
+                        <MenuItem icon={<GridFill />}> <a href="/dashboard">Dashboard</a></MenuItem>
                     </Menu>
                 </SidebarContent>
             </ProSidebar>
