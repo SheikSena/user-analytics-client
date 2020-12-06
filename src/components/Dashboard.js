@@ -1,11 +1,12 @@
 import React from 'react';
 import { Card, CardColumns } from 'react-bootstrap'
+import BeerRecipes from './BeerRecipes';
 
 export default function Dashboard() {
 
     return (
         <div style={{ backgroundColor: 'white', height: '100%', paddingTop: '10px', paddingRight: '10px' }}>
-            <Card>
+            <Card bg="light" text="dark">
                 <Card.Header className="text-center">DASHBOARD</Card.Header>
                 <Card.Body>
                     <CardColumns>
@@ -37,6 +38,12 @@ export default function Dashboard() {
                             </Card.Body>
                         </Card>
                     </CardColumns>
+                </Card.Body>
+            </Card>
+            <br></br>
+            <Card>
+                <Card.Body>
+                    <BeerRecipes />
                 </Card.Body>
             </Card>
         </div>
