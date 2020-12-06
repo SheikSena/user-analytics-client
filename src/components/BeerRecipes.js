@@ -43,7 +43,7 @@ function BeerRecipes() {
             console.log(data)
             setData(response.data)
         });
-    }, []);
+    });
 
     const columns = [
         {
