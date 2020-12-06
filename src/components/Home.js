@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
+import Dashboard from './Dashboard';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
                 <Switch>
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/register' component={Register} />
+                    <Route exact path='/dashboard' component={Dashboard} />
                 </Switch>
             </Router>
         </div>
