@@ -8,7 +8,7 @@ function Sidebar() {
     return (
         <div class="leftpane">
             <ProSidebar collapsed={false} >
-                <SidebarContent>
+                <SidebarContent style={{ backgroundColor: 'black' }}>
                     <Menu icon={<CheckSquareFill />}>
                         <MenuItem icon={<GridFill />}> <a href="/dashboard">Dashboard</a></MenuItem>
                     </Menu>
