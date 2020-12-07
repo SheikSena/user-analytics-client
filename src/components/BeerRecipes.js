@@ -1,48 +1,16 @@
-import DataTable, { defaultThemes } from 'react-data-table-component';
+import DataTable from 'react-data-table-component';
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 
 function BeerRecipes() {
 
-    const customStyles = {
-        header: {
-            style: {
-                minHeight: '56px',
-            },
-        },
-        headRow: {
-            style: {
-                borderTopStyle: 'solid',
-                borderTopWidth: '1px',
-                borderTopColor: defaultThemes.default.divider.default,
-            },
-        },
-        headCells: {
-            style: {
-                '&:not(:last-of-type)': {
-                    borderRightStyle: 'solid',
-                    borderRightWidth: '1px',
-                    borderRightColor: defaultThemes.default.divider.default,
-                },
-            },
-        },
-        cells: {
-            style: {
-                '&:not(:last-of-type)': {
-                    borderRightStyle: 'solid',
-                    borderRightWidth: '1px',
-                    borderRightColor: defaultThemes.default.divider.default,
-                },
-            },
-        },
-    };
-
     const [data, setData] = useState([]);
     useEffect(() => {
-        Axios.get("https://api.punkapi.com/v2/beers").then((response) => {
-            console.log(data)
-            setData(response.data)
-        });
+        if (data.length <= 0) {
+            Axios.get("https://api.punkapi.com/v2/beers").then((response) => {
+                setData(response.data)
+            });
+        }
     });
 
     const columns = [
@@ -59,6 +27,12 @@ function BeerRecipes() {
             width: '7%'
         },
         {
+            name: 'First Brewed',
+            selector: 'first_brewed',
+            sortable: true,
+            width: '3%'
+        },
+        {
             name: 'Description',
             selector: 'description',
             sortable: true,
@@ -67,14 +41,12 @@ function BeerRecipes() {
 
     return (
         <DataTable
-            title="Beer Recipes	"
+            title="Beer Recipes"
             columns={columns}
             data={data}
             pagination={true}
             fixedHeader={true}
             highlightOnHover={true}
-            striped={true}
-            customStyles={customStyles}
         />
     )
 }

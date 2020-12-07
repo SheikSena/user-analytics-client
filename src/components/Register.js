@@ -20,10 +20,10 @@ export default function Register() {
         <div style={{ backgroundColor: 'white', height: '100%', paddingTop: '10px', paddingRight: '10px' }}>
             <Breadcrumb>
                 <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-                <Breadcrumb.Item active>Register</Breadcrumb.Item>
+                <Breadcrumb.Item active>Sign Up</Breadcrumb.Item>
             </Breadcrumb>
-            <Card bg="light" text="dark">
-                <Card.Header className="text-center">REGISTER</Card.Header>
+            <Card >
+                <Card.Header className="text-center"><b>SIGN UP</b></Card.Header>
                 <Card.Body>
                     <Form>
                         <Form.Row>
@@ -67,7 +67,7 @@ export default function Register() {
                     </Form>
                 </Card.Body>
                 <Card.Footer className="text-muted">
-                    <Button variant="primary" type="submit" disabled={butttonDisable} onClick={register}>REGISTER</Button>
+                    <Button variant="primary" type="submit" disabled={butttonDisable} onClick={register}>SIGN UP</Button>
                 </Card.Footer>
             </Card>
             <div style={{ position: 'absolute', top: 60, right: 14 }} >

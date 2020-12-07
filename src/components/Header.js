@@ -18,13 +18,13 @@ export default function Header() {
                     height="30"
                     className="d-inline-block align-top"
                 />{' '}
-            User Analytics
+            USER ANALYTICS
           </Navbar.Brand>
             <Nav className="mr-auto">
             </Nav>
             <Nav>
-                <Nav.Link className={loginClass} href="/login">Login</Nav.Link>
-                <Nav.Link className={registerClass} href="/register">Register</Nav.Link>
+                <Nav.Link className={loginClass} href="/login">LOGIN</Nav.Link>
+                <Nav.Link className={registerClass} href="/register">SIGN UP</Nav.Link>
             </Nav>
         </Navbar>
     )

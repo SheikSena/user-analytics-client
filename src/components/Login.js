@@ -22,8 +22,8 @@ export default function Login() {
                 <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
                 <Breadcrumb.Item active>Login</Breadcrumb.Item>
             </Breadcrumb>
-            <Card bg="light" text="dark">
-                <Card.Header className="text-center">LOGIN</Card.Header>
+            <Card>
+                <Card.Header className="text-center"><b>LOGIN</b></Card.Header>
                 <Card.Body>
                     <Row>
                         <Col xs={6}>
