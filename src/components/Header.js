@@ -1,6 +1,6 @@
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 
 export default function Header() {
 
@@ -25,6 +25,21 @@ export default function Header() {
             <Nav>
                 <Nav.Link className={loginClass} href="/login">LOGIN</Nav.Link>
                 <Nav.Link className={registerClass} href="/register">SIGN UP</Nav.Link>
+                <NavDropdown title="WELCOME, SHEIK SENA REDDY" id="collasible-nav-dropdown">
+                    <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>
+                </NavDropdown>
+                <Nav.Link className={registerClass} >
+                    <img
+                        alt=""
+                        src="https://i.pinimg.com/originals/3f/3d/d9/3f3dd9219f7bb1c9617cf4f154b70383.jpg"
+                        width="30"
+                        height="30"
+                        className="d-inline-block align-top"
+                        style={{ borderRadius: 400 / 2 }}
+                    />{' '}
+                </Nav.Link>
             </Nav>
         </Navbar>
     )

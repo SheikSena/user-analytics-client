@@ -17,7 +17,7 @@ export default function Login() {
     }
 
     return (
-        <div style={{ backgroundColor: 'white', height: '100%', paddingTop: '10px', paddingRight: '10px' }}>
+        <div style={{ backgroundColor: 'white', height: '100%', paddingTop: '12px', paddingRight: '12px' }}>
             <Breadcrumb>
                 <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
                 <Breadcrumb.Item active>Login</Breadcrumb.Item>
@@ -25,6 +25,7 @@ export default function Login() {
             <Card>
                 <Card.Header className="text-center"><b>LOGIN</b></Card.Header>
                 <Card.Body>
+
                     <Row>
                         <Col xs={6}>
                             <Image src="https://i.pinimg.com/originals/3f/3d/d9/3f3dd9219f7bb1c9617cf4f154b70383.jpg" rounded width="500" height="300" />

@@ -17,7 +17,7 @@ export default function Register() {
     }
 
     return (
-        <div style={{ backgroundColor: 'white', height: '100%', paddingTop: '10px', paddingRight: '10px' }}>
+        <div style={{ backgroundColor: 'white', height: '100%', paddingTop: '12px', paddingRight: '12px' }}>
             <Breadcrumb>
                 <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
                 <Breadcrumb.Item active>Sign Up</Breadcrumb.Item>
