@@ -1,6 +1,7 @@
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import React, { useState } from 'react';
 
 export default function Header() {
 
@@ -8,23 +9,19 @@ export default function Header() {
     var loginClass = location.includes("/login") ? "nav-item active" : "nav-item";
     var registerClass = location.includes("/register") ? "nav-item active" : "nav-item";
 
-    return (
-        <Navbar variant="dark" fixed="top" className="toppane" style={{ backgroundColor: 'black' }}>
-            <Navbar.Brand href="#home">
-                <img
-                    alt=""
-                    src="https://i.pinimg.com/originals/3f/3d/d9/3f3dd9219f7bb1c9617cf4f154b70383.jpg"
-                    width="30"
-                    height="30"
-                    className="d-inline-block align-top"
-                />{' '}
-            USER ANALYTICS
-          </Navbar.Brand>
-            <Nav className="mr-auto">
-            </Nav>
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    const guestLinks = (
+        <>
             <Nav>
-                <Nav.Link className={loginClass} href="/login">LOGIN</Nav.Link>
-                <Nav.Link className={registerClass} href="/register">SIGN UP</Nav.Link>
+                {/* <Nav.Link className={loginClass} href="/login">LOGIN</Nav.Link>
+                <Nav.Link className={registerClass} href="/register">SIGN UP</Nav.Link> */}
+            </Nav>
+        </>
+    );
+    const userLinks = (
+        <>
+            <Nav>
                 <NavDropdown title="WELCOME, SHEIK SENA REDDY" id="collasible-nav-dropdown">
                     <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
                     <NavDropdown.Divider />
@@ -41,6 +38,26 @@ export default function Header() {
                     />{' '}
                 </Nav.Link>
             </Nav>
+        </>
+    );
+
+
+    return (
+        <Navbar variant="dark" fixed="top" className="toppane" style={{ backgroundColor: 'black' }}>
+            <Navbar.Brand href="#home">
+                <img
+                    alt=""
+                    src="https://i.pinimg.com/originals/3f/3d/d9/3f3dd9219f7bb1c9617cf4f154b70383.jpg"
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top"
+                />{' '}
+            USER ANALYTICS
+          </Navbar.Brand>
+            <Nav className="mr-auto">
+            </Nav>
+            {loggedIn ? userLinks : guestLinks}
+
         </Navbar>
     )
 }
