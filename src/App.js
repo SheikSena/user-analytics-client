@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import Register from './components/Register';
+import { ReactRouterGlobalHistory } from 'react-router-global-history';
 
 class App extends Component {
   render() {
@@ -25,12 +26,13 @@ class App extends Component {
 
     const routerLinks = (
       <>
-        <Route path="/" exact component={Dashboard} />
+        <Route path="/dashboard" exact component={Dashboard} />
         <Route path="/register" exact component={Register} />
       </>
     )
     return (
       <Router>
+        <ReactRouterGlobalHistory />
         <Header />
         { this.props.auth.isLoggedIn ? userLinks : getLinks}
         <div className="rightpane">

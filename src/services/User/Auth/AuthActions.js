@@ -1,10 +1,12 @@
 import { LOGIN_REQUEST, SUCCESS, FAILURE, LOGOUT_REQUEST } from './AuthTypes'
+import getHistory from 'react-router-global-history';
 
 export const authenticateUser = (email, password) => {
     return (dispatch) => {
         dispatch(loginRequest());
         if (email === "test" && password === "test") {
             dispatch(success(true));
+            getHistory().push('/dashboard');
         } else {
             dispatch(failure());
         }
