@@ -2,36 +2,51 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar'
-import Home from './components/Home'
 import Login from './components/Login'
-import Register from './components/Register'
-import React, { useState } from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import Register from './components/Register';
 
-function App() {
+class App extends Component {
+  render() {
+    const userLinks = (
+      <>
+        <Sidebar />
+      </>
+    );
 
-  const [loggedIn, setLoggedIn] = useState(false);
+    const getLinks = (
+      <>
+        <Login />
+      </>
+    );
 
-  const guestLinks = (
-    <>
-      <Login />
-      {/* <Register /> */}
-    </>
-  );
-
-
-  const userLinks = (
-    <>
-      <Sidebar />
-      <Home />
-    </>
-  );
-
-  return (
-    <div>
-      <Header />
-      {loggedIn ? userLinks : guestLinks}
-    </div>
-  );
+    const routerLinks = (
+      <>
+        <Route path="/" exact component={Dashboard} />
+        <Route path="/register" exact component={Register} />
+      </>
+    )
+    return (
+      <Router>
+        <Header />
+        { this.props.auth.isLoggedIn ? userLinks : getLinks}
+        <div className="rightpane">
+          <Switch>
+            {this.props.auth.isLoggedIn ? routerLinks : null}
+          </Switch>
+        </div>
+      </Router >
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    auth: state.auth
+  }
+};
+
+export default connect(mapStateToProps)(App);

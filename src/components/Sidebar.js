@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ProSidebar, Menu, MenuItem, SidebarContent } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import { CheckSquareFill, GridFill } from 'react-bootstrap-icons';
-
+import { Link } from 'react-router-dom';
 function Sidebar() {
 
     return (
@@ -10,7 +10,8 @@ function Sidebar() {
             <ProSidebar collapsed={false} >
                 <SidebarContent style={{ backgroundColor: 'black' }}>
                     <Menu icon={<CheckSquareFill />}>
-                        <MenuItem icon={<GridFill />}> <a href="/dashboard">Dashboard</a></MenuItem>
+                        <MenuItem icon={<GridFill />}> <Link to="/" className="nav-link">Dashboard</Link></MenuItem>
+                        <MenuItem icon={<GridFill />}> <Link to="/register" className="nav-link">Login</Link></MenuItem>
                     </Menu>
                 </SidebarContent>
             </ProSidebar>
