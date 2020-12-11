@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 function Sidebar() {
 
-    const [collapseSideBar, setCollapseSidebar] = useState(false);
+    const [collapseSideBar, setCollapseSidebar] = useState(true);
 
     const toogleSideBar = () => {
         if (collapseSideBar) {
