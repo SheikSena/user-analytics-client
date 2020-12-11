@@ -1,4 +1,5 @@
 import { LOGIN_REQUEST, SUCCESS, FAILURE, LOGOUT_REQUEST } from './AuthTypes'
+import { PURGE } from "redux-persist";
 
 const initialState = {
     isLoggedIn: ''
@@ -22,6 +23,8 @@ const reducer = (state = initialState, action) => {
             return {
                 isLoggedIn: action.payload
             };
+        case PURGE:
+            return initialState;
         default:
             return state;
     }

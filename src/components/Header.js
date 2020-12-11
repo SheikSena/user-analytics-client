@@ -4,12 +4,12 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logoutUser } from '../services/User/Auth/AuthActions'
-
+import { persistor } from '../services/Store'
 
 class Header extends Component {
 
     logout = () => {
-        this.props.logoutUser();
+        persistor.purge()
     };
 
     render() {
