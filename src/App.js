@@ -13,7 +13,6 @@ import { ReactRouterGlobalHistory } from 'react-router-global-history';
 class App extends Component {
   render() {
 
-
     const userLinks = (
       <>
         <Sidebar />
