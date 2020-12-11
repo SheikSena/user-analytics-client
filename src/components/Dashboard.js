@@ -7,7 +7,6 @@ export default function Dashboard() {
     return (
         <div style={{ backgroundColor: 'white', height: '100%', paddingTop: '12px', paddingRight: '12px' }}>
             <Card >
-                <Card.Header className="text-center text-uppercase"><b>DASHBOARD</b></Card.Header>
                 <Card.Body>
                     <CardColumns>
                         <Card>

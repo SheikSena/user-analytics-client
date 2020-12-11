@@ -11,7 +11,6 @@ function Sidebar() {
                 <SidebarContent style={{ backgroundColor: 'black' }}>
                     <Menu icon={<CheckSquareFill />}>
                         <MenuItem icon={<GridFill />}> <Link to="/dashboard" className="nav-link">Dashboard</Link></MenuItem>
-                        <MenuItem icon={<GridFill />}> <Link to="/register" className="nav-link">Login</Link></MenuItem>
                     </Menu>
                 </SidebarContent>
             </ProSidebar>

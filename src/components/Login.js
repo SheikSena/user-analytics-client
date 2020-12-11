@@ -51,7 +51,7 @@ class Login extends Component {
         const { email, password, error, displayLoginDiv, displayRegDiv } = this.state;
         return (
             <div class="col d-flex justify-content-center" style={{ backgroundColor: 'white', height: '100%', paddingTop: '100px' }}>
-                {displayLoginDiv ? <div style={{ height: '50%', width: '30%' }}>
+                {displayLoginDiv ? <div style={{ height: '50%', }}>
                     {error && <Alert variant="danger"> {error}</Alert>}
                     <Card >
                         <Card.Header className="text-center">LOGIN</Card.Header>
@@ -88,7 +88,7 @@ class Login extends Component {
                     </Card>
                 </div> : null}
                 {displayRegDiv ?
-                    <div style={{ height: '50%', width: '30%' }}>
+                    <div style={{ height: '50%' }}>
                         <Card >
                             <Card.Header className="text-center">SIGN UP</Card.Header>
                             <Card.Body>
