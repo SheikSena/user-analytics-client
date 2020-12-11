@@ -66,13 +66,14 @@ body, html {
     overflow: auto;
     padding-top: 55px;
     position: fixed;
+    z-index: 10;
 }
 
 .rightpane {
-  width: 82%;
+  width: 94%;
   height: 100%;
   float: right;
-  padding-top: 55px
+  padding-top: 55px;
 }
 
 .toppane {
