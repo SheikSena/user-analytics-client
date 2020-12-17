@@ -37,7 +37,7 @@ class Header extends Component {
         )
 
         return (
-            <Navbar variant="dark" fixed="top" className="toppane" style={{ backgroundColor: 'black' }}>
+            <Navbar variant="dark" fixed="top" className="toppane" style={{ backgroundColor: 'rgb(10, 16, 36)' }}>
                 <Navbar.Brand href="#home">
                     <img
                         alt=""
