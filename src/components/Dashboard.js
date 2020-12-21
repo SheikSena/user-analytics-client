@@ -5,7 +5,7 @@ import BeerRecipes from './BeerRecipes';
 export default function Dashboard() {
 
     return (
-        <div style={{ backgroundColor: 'white', height: '100%', paddingTop: '12px', paddingRight: '12px' }}>
+        <div>
             <Card >
                 <Card.Body>
                     <CardColumns>

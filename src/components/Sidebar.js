@@ -19,12 +19,12 @@ function Sidebar() {
     return (
         <div class="leftpane">
             <ProSidebar collapsed={collapseSideBar} >
-                <SidebarContent style={{ backgroundColor: 'rgb(10, 16, 36)' }}>
+                <SidebarContent style={{ backgroundColor: '#0B0B0D' }}>
                     <Menu icon={<CheckSquareFill />}>
                         <MenuItem icon={<GridFill />} active={true}> <Link to="/dashboard" className="nav-link"> Dashboard</Link></MenuItem>
                     </Menu>
                 </SidebarContent>
-                <SidebarFooter style={{ backgroundColor: 'rgb(10, 16, 36)' }}>
+                <SidebarFooter style={{ backgroundColor: '#0B0B0D' }}>
                     <div style={{ float: 'right', 'paddingRight': '15px', 'paddingTop': '15px', 'paddingBottom': '15px' }}>
                         {collapseSideBar ? <ChevronDoubleRight width="25" height="25" onClick={toogleSideBar} style={{ color: 'white' }} /> : <ChevronDoubleLeft width="25" height="25" onClick={toogleSideBar} style={{ color: 'white' }} />}
                     </div>

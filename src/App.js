@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
-import Sidebar from './components/Sidebar'
+// import Sidebar from './components/Sidebar'
 import Login from './components/Login'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -15,7 +15,7 @@ class App extends Component {
 
     const userLinks = (
       <>
-        <Sidebar />
+        {/* <Sidebar /> */}
       </>
     );
 

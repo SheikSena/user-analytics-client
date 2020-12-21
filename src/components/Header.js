@@ -14,6 +14,10 @@ class Header extends Component {
 
     render() {
 
+        var location = window.location.href;
+        var dashboardClass = location.includes("/dashboard") ? "white" : "";
+
+
         const userLinks = (
             <>
                 <Nav>
@@ -36,8 +40,16 @@ class Header extends Component {
             </>
         )
 
+        const navBarLinks = (
+            <>
+                <Nav className="mr-auto">
+                    <Nav.Link href="/dashboard" style={{ color: dashboardClass }}>Dashboard</Nav.Link>
+                </Nav>
+            </>
+        )
+
         return (
-            <Navbar variant="dark" fixed="top" className="toppane" style={{ backgroundColor: 'rgb(10, 16, 36)' }}>
+            <Navbar variant="dark" fixed="top" className="toppane">
                 <Navbar.Brand href="#home">
                     <img
                         alt=""
@@ -48,8 +60,7 @@ class Header extends Component {
                     />{' '}
             USER ANALYTICS
           </Navbar.Brand>
-                <Nav className="mr-auto">
-                </Nav>
+                {this.props.auth.isLoggedIn ? navBarLinks : null}
                 {this.props.auth.isLoggedIn ? userLinks : null}
             </Navbar >
         )
