@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logoutUser } from '../services/User/Auth/AuthActions'
 import { persistor } from '../services/Store'
-
+import { Bell, LockFill, PersonFill } from 'react-bootstrap-icons';
+import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 class Header extends Component {
 
     logout = () => {
@@ -21,10 +22,11 @@ class Header extends Component {
         const userLinks = (
             <>
                 <Nav>
-                    <NavDropdown title="WELCOME, SHEIK SENA REDDY" id="collasible-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+                    <Nav.Link href="" style={{ color: "white" }}><Bell /></Nav.Link>
+                    <NavDropdown title="WELCOME, SHEIK SENA REDDY" id="basic-nav-dropdown">
+                        <NavDropdown.Item href="#action/3.1"><PersonFill /> Profile</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="#" onClick={this.logout}>Logout</NavDropdown.Item>
+                        <NavDropdown.Item href="#" onClick={this.logout}> <LockFill /> Logout</NavDropdown.Item>
                     </NavDropdown>
                     <Nav.Link>
                         <img
@@ -36,7 +38,7 @@ class Header extends Component {
                             style={{ borderRadius: 400 / 2 }}
                         />{' '}
                     </Nav.Link>
-                </Nav>
+                </Nav >
             </>
         )
 
@@ -49,7 +51,7 @@ class Header extends Component {
         )
 
         return (
-            <Navbar variant="dark" fixed="top" className="toppane">
+            <Navbar variant="dark" expand="lg" fixed="top" className="toppane">
                 <Navbar.Brand href="#home">
                     <img
                         alt=""
@@ -58,10 +60,13 @@ class Header extends Component {
                         height="30"
                         className="d-inline-block align-top"
                     />{' '}
-            USER ANALYTICS
-          </Navbar.Brand>
-                {this.props.auth.isLoggedIn ? navBarLinks : null}
-                {this.props.auth.isLoggedIn ? userLinks : null}
+        USER ANALYTICS
+      </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <NavbarCollapse id="basic-navbar-nav">
+                    {this.props.auth.isLoggedIn ? navBarLinks : null}
+                    {this.props.auth.isLoggedIn ? userLinks : null}
+                </NavbarCollapse>
             </Navbar >
         )
     }
