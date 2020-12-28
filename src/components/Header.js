@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logoutUser } from '../services/User/Auth/AuthActions'
 import { persistor } from '../services/Store'
-import { Bell, LockFill, PersonFill } from 'react-bootstrap-icons';
+import { Bell, LockFill, PersonFill, GearFill } from 'react-bootstrap-icons';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 class Header extends Component {
 
@@ -25,6 +25,7 @@ class Header extends Component {
                     <Nav.Link href="" style={{ color: "white" }}><Bell /></Nav.Link>
                     <NavDropdown title="WELCOME, SHEIK SENA REDDY" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1"><PersonFill /> Profile</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.2"><GearFill /> Settings</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="#" onClick={this.logout}> <LockFill /> Logout</NavDropdown.Item>
                     </NavDropdown>
