@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
-import { Card, Button, Form, FormControl, InputGroup, Col, Alert } from 'react-bootstrap'
+import { Card, CardContent, Grid, Button, CardHeader } from '@material-ui/core'
+import { Form, FormControl, InputGroup, Col, Alert } from 'react-bootstrap'
 import { LockFill, EnvelopeFill, PersonFill } from 'react-bootstrap-icons';
 import { connect } from 'react-redux';
 import { authenticateUser } from '../services/User/Auth/AuthActions'
+import TextField from '@material-ui/core/TextField';
 
 class Login extends Component {
 
@@ -49,43 +51,56 @@ class Login extends Component {
 
     render() {
         const { email, password, error, displayLoginDiv, displayRegDiv } = this.state;
+
         return (
-            <div class="col d-flex justify-content-center" style={{ backgroundColor: 'white', height: '100%', paddingTop: '100px' }}>
+            <div className="col d-flex justify-content-center" style={{ backgroundColor: 'white', height: '100%', paddingTop: '100px' }}>
                 {displayLoginDiv ? <div style={{ height: '50%', }}>
                     {error && <Alert variant="danger"> {error}</Alert>}
-                    <Card >
-                        <Card.Header className="text-center">LOGIN</Card.Header>
-                        <Card.Body>
-                            <Form>
-                                <Form.Label>Email Address </Form.Label>
-                                <Form.Row>
-                                    <Form.Group as={Col}>
-                                        <InputGroup>
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text><EnvelopeFill /></InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                            <FormControl required autoComplete="off" type="text" name="email" value={email} placeholder="Enter Email Address" onChange={this.handleChange} />
-                                        </InputGroup>
-                                    </Form.Group>
-                                </Form.Row>
-                                <Form.Label>Password </Form.Label>
-                                <Form.Row>
-                                    <Form.Group as={Col}>
-                                        <InputGroup>
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text><LockFill /></InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                            <FormControl required autoComplete="off" type="password" name="password" value={password} placeholder="Enter Password" onChange={this.handleChange} />
-                                        </InputGroup>
-                                    </Form.Group>
-                                </Form.Row>
-                                <p>Don't have an account? click <a href="#" onClick={this.showRegDiv.bind(this)}>here</a> to create an account.</p>
-                            </Form>
-                        </Card.Body>
-                        <Card.Footer style={{ "text-align": "right" }}>
-                            <Button size="sm" type="button1" variant="primary" onClick={this.validateUser} disabled={this.state.email.length === 0 || this.state.password.length === 0}> LOGIN </Button>
-                        </Card.Footer>
-                    </Card>
+                    <Grid>
+                        <Grid>
+                            <Card >
+                                <CardHeader title="LOGIN" style={{ textAlign: 'center', 'fontWeight': 'bold' }} />
+                                <CardContent>
+                                    <form noValidate>
+                                        <TextField variant="outlined"
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            id="email"
+                                            label="Email Address"
+                                            name="email"
+                                            autoComplete="off"
+                                            value={email}
+                                            onChange={this.handleChange}
+                                        />
+                                        <TextField
+                                            variant="outlined"
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            name="password"
+                                            label="Password"
+                                            type="password"
+                                            id="password"
+                                            autoComplete="current-password"
+                                            value={password}
+                                            onChange={this.handleChange}
+                                        />
+                                        <p>Don't have an account? click <a href="#" onClick={this.showRegDiv.bind(this)}>here</a> to create an account.</p>
+                                    </form>
+                                    <Button
+                                        fullWidth
+                                        type="submit"
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={this.validateUser}
+                                    >
+                                        LOGIN
+                            </Button>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    </Grid>
                 </div> : null}
                 {displayRegDiv ?
                     <div style={{ height: '50%' }}>

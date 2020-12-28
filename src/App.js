@@ -16,6 +16,8 @@ class App extends Component {
     const userLinks = (
       <>
         {/* <Sidebar /> */}
+        <Header />
+
       </>
     );
 
@@ -34,7 +36,6 @@ class App extends Component {
     return (
       <Router>
         <ReactRouterGlobalHistory />
-        <Header />
         { this.props.auth.isLoggedIn ? userLinks : getLinks}
         <div className="rightpane">
           <Switch>
