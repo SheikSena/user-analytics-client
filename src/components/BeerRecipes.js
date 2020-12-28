@@ -1,6 +1,6 @@
-import DataTable from 'react-data-table-component';
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
+import MUIDataTable from "mui-datatables";
 
 function BeerRecipes() {
 
@@ -15,38 +15,56 @@ function BeerRecipes() {
 
     const columns = [
         {
-            name: 'Name',
-            selector: 'name',
-            sortable: true,
-            width: '5%'
+            name: "name",
+            label: "Name",
+            options: {
+                filter: true,
+                sort: true,
+            }
         },
         {
-            name: 'TagLine',
-            selector: 'tagline',
-            sortable: true,
-            width: '7%'
+            name: "tagline",
+            label: "TagLine",
+            options: {
+                filter: true,
+                sort: false,
+            }
         },
         {
-            name: 'First Brewed',
-            selector: 'first_brewed',
-            sortable: true,
-            width: '3%'
+            name: "first_brewed",
+            label: "First Brewed",
+            options: {
+                filter: true,
+                sort: false,
+            }
         },
         {
-            name: 'Description',
-            selector: 'description',
-            sortable: true,
-        }
+            name: "description",
+            label: "Description",
+            options: {
+                filter: true,
+                sort: false,
+            }
+        },
     ];
 
+    const options = {
+        filter: true,
+        filterType: 'dropdown',
+        responsive: 'standard',
+        fixedHeader: true,
+        fixedSelectColumn: true,
+        tableBodyHeight: '500px',
+        pagination: true
+    };
+
     return (
-        <DataTable
-            title="Beer Recipes"
-            columns={columns}
+
+        <MUIDataTable
+            title={"Beer Recipes"}
             data={data}
-            pagination={true}
-            fixedHeader={true}
-            highlightOnHover={true}
+            columns={columns}
+            options={options}
         />
     )
 }

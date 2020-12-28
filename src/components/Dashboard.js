@@ -1,50 +1,24 @@
 import React from 'react';
-import { Card, CardColumns } from 'react-bootstrap'
+import { Grid } from '@material-ui/core'
 import BeerRecipes from './BeerRecipes';
 
 export default function Dashboard() {
 
     return (
         <div>
-            <Card >
-                <Card.Body>
-                    <CardColumns>
-                        <Card>
-                            <Card.Body>
-                                <Card.Title>Card title that wraps to a new line</Card.Title>
-                                <Card.Text>
-                                    This is a longer card with supporting text below as a natural lead-in to
-                                    additional content. This content is a little bit longer.
-                        </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        <Card>
-                            <Card.Body>
-                                <Card.Title>Card title that wraps to a new line</Card.Title>
-                                <Card.Text>
-                                    This is a longer card with supporting text below as a natural lead-in to
-                                    additional content. This content is a little bit longer.
-                         </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        <Card>
-                            <Card.Body>
-                                <Card.Title>Card title that wraps to a new line</Card.Title>
-                                <Card.Text>
-                                    This is a longer card with supporting text below as a natural lead-in to
-                                    additional content. This content is a little bit longer.
-                        </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </CardColumns>
-                </Card.Body>
-            </Card>
+            <Grid container spacing={1}>
+                <Grid item xs={12} md={8} lg={4}>
+
+                </Grid>
+                <Grid item xs={12} md={8} lg={4}>
+
+                </Grid>
+                <Grid item xs={12} md={8} lg={4}>
+
+                </Grid>
+            </Grid>
             <br></br>
-            <Card>
-                <Card.Body>
-                    <BeerRecipes />
-                </Card.Body>
-            </Card>
+            <BeerRecipes />
         </div>
     );
 }
