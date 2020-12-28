@@ -5,8 +5,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logoutUser } from '../services/User/Auth/AuthActions'
 import { persistor } from '../services/Store'
-import { Bell, LockFill, PersonFill, GearFill } from 'react-bootstrap-icons';
+import { LockFill, PersonFill, GearFill } from 'react-bootstrap-icons';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
+import Avatar from '@material-ui/core/Avatar';
+import Badge from '@material-ui/core/Badge';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 class Header extends Component {
 
     logout = () => {
@@ -22,24 +25,16 @@ class Header extends Component {
         const userLinks = (
             <>
                 <Nav>
-                    <Nav.Link href="" style={{ color: "white" }}><Bell /></Nav.Link>
+                    <Nav.Link href="" style={{ color: "white" }}><Badge badgeContent={4} color="primary"><NotificationsIcon /></Badge></Nav.Link>
                     <NavDropdown title="WELCOME, SHEIK SENA REDDY" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1"><PersonFill /> Profile</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.2"><GearFill /> Settings</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="#" onClick={this.logout}> <LockFill /> Logout</NavDropdown.Item>
                     </NavDropdown>
-                    <Nav.Link>
-                        <img
-                            alt=""
-                            src="https://i.pinimg.com/originals/3f/3d/d9/3f3dd9219f7bb1c9617cf4f154b70383.jpg"
-                            width="30"
-                            height="30"
-                            className="d-inline-block align-top"
-                            style={{ borderRadius: 400 / 2 }}
-                        />{' '}
-                    </Nav.Link>
                 </Nav >
+                {' '}
+                <Avatar alt="Remy Sharp" src="https://i.pinimg.com/originals/3f/3d/d9/3f3dd9219f7bb1c9617cf4f154b70383.jpg" />
             </>
         )
 
