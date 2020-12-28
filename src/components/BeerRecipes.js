@@ -55,7 +55,9 @@ function BeerRecipes() {
         fixedHeader: true,
         fixedSelectColumn: true,
         tableBodyHeight: '500px',
-        pagination: true
+        pagination: true,
+        rowsPerPage: 500,
+        rowsPerPageOptions: [500, 750, 1000]
     };
 
     return (
