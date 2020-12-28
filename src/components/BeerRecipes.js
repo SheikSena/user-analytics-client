@@ -49,7 +49,7 @@ function BeerRecipes() {
     ];
 
     const options = {
-        filter: true,
+        filter: false,
         filterType: 'dropdown',
         responsive: 'standard',
         fixedHeader: true,
@@ -59,7 +59,6 @@ function BeerRecipes() {
     };
 
     return (
-
         <MUIDataTable
             title={"Beer Recipes"}
             data={data}
