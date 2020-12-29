@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
-import { Card, CardContent, Grid, Button, CardHeader } from '@material-ui/core'
+import { Card, CardContent, Grid, Button } from '@material-ui/core'
 import { Alert } from 'react-bootstrap'
 import { connect } from 'react-redux';
 import { authenticateUser } from '../services/User/Auth/AuthActions'
@@ -69,7 +69,7 @@ class Login extends Component {
                         <Grid justify="space-between"
                             alignItems="center">
                             <Card >
-                                <CardHeader title="LOGIN" style={{ textAlign: 'center', 'fontWeight': 'bold' }} />
+                                {/* <CardHeader title="LOGIN" style={{ textAlign: 'center', 'fontWeight': 'bold' }} /> */}
                                 <CardContent>
                                     <form noValidate>
                                         <TextField variant="outlined" margin="normal"
@@ -117,7 +117,7 @@ class Login extends Component {
                             <Grid justify="space-between"
                                 alignItems="center" >
                                 <Card >
-                                    <CardHeader title="SIGN UP" style={{ textAlign: 'center', 'fontWeight': 'bold' }} />
+                                    {/* <CardHeader title="SIGN UP" style={{ textAlign: 'center', 'fontWeight': 'bold' }} /> */}
                                     <CardContent>
                                         <form noValidate>
                                             <TextField variant="outlined" margin="normal"
