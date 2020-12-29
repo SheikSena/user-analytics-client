@@ -1,12 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import { Card, CardContent, Grid, Button, CardHeader } from '@material-ui/core'
-import { Form, FormControl, InputGroup, Col, Alert } from 'react-bootstrap'
-import { LockFill, EnvelopeFill, PersonFill } from 'react-bootstrap-icons';
+import { Alert } from 'react-bootstrap'
 import { connect } from 'react-redux';
 import { authenticateUser } from '../services/User/Auth/AuthActions'
 import TextField from '@material-ui/core/TextField';
+import { styled } from '@material-ui/core/styles';
 
+const MyButton = styled(Button)({
+    background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    color: 'white',
+    height: 40,
+    padding: '0 30px',
+});
 class Login extends Component {
 
     constructor(props) {
@@ -53,17 +62,16 @@ class Login extends Component {
         const { email, password, error, displayLoginDiv, displayRegDiv } = this.state;
 
         return (
-            <div className="col d-flex justify-content-center" style={{ backgroundColor: 'white', height: '100%', paddingTop: '100px' }}>
-                {displayLoginDiv ? <div style={{ height: '50%', }}>
+            <div className="col d-flex justify-content-center" style={{ backgroundColor: 'white', height: '100%', paddingTop: '70px' }}>
+                {displayLoginDiv ? <div style={{ height: '50%', width: '30%' }}>
                     {error && <Alert variant="danger"> {error}</Alert>}
                     <Grid>
-                        <Grid>
+                        <Grid justify="center">
                             <Card >
                                 <CardHeader title="LOGIN" style={{ textAlign: 'center', 'fontWeight': 'bold' }} />
                                 <CardContent>
                                     <form noValidate>
-                                        <TextField variant="outlined"
-                                            margin="normal"
+                                        <TextField variant="outlined" margin="normal"
                                             required
                                             fullWidth
                                             id="email"
@@ -88,7 +96,7 @@ class Login extends Component {
                                         />
                                         <p>Don't have an account? click <a href="#" onClick={this.showRegDiv.bind(this)}>here</a> to create an account.</p>
                                     </form>
-                                    <Button
+                                    <MyButton
                                         fullWidth
                                         type="submit"
                                         variant="contained"
@@ -96,79 +104,77 @@ class Login extends Component {
                                         onClick={this.validateUser}
                                     >
                                         LOGIN
-                            </Button>
+                            </MyButton >
                                 </CardContent>
                             </Card>
                         </Grid>
                     </Grid>
                 </div> : null}
                 {displayRegDiv ?
-                    <div style={{ height: '50%' }}>
+                    <div style={{ height: '50%', width: '25%' }}>
                         <Card >
-                            <Card.Header className="text-center">SIGN UP</Card.Header>
-                            <Card.Body>
-                                <Form>
-                                    <Form.Label>First Name</Form.Label>
-                                    <Form.Row>
-                                        <Form.Group as={Col}>
-                                            <InputGroup>
-                                                <InputGroup.Prepend>
-                                                    <InputGroup.Text><PersonFill /></InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <FormControl required autoComplete="off" type="text" name="firstName" placeholder="Enter First Name" />
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Form.Row>
-                                    <Form.Label>Last Name</Form.Label>
-                                    <Form.Row>
-                                        <Form.Group as={Col}>
-                                            <InputGroup>
-                                                <InputGroup.Prepend>
-                                                    <InputGroup.Text><PersonFill /></InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <FormControl required autoComplete="off" type="text" name="lastName" placeholder="Enter Last Name" />
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Form.Row>
-                                    <Form.Label>Email Address </Form.Label>
-                                    <Form.Row>
-                                        <Form.Group as={Col}>
-                                            <InputGroup>
-                                                <InputGroup.Prepend>
-                                                    <InputGroup.Text><EnvelopeFill /></InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <FormControl required autoComplete="off" type="text" name="email2" placeholder="Enter Email Address" />
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Form.Row>
-                                    <Form.Label>Password </Form.Label>
-                                    <Form.Row>
-                                        <Form.Group as={Col}>
-                                            <InputGroup>
-                                                <InputGroup.Prepend>
-                                                    <InputGroup.Text><LockFill /></InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <FormControl required autoComplete="off" type="password" name="password2" placeholder="Enter Password" />
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Form.Row>
-                                    <Form.Label>Confirm Password </Form.Label>
-                                    <Form.Row>
-                                        <Form.Group as={Col}>
-                                            <InputGroup>
-                                                <InputGroup.Prepend>
-                                                    <InputGroup.Text><LockFill /></InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <FormControl required autoComplete="off" type="password" name="cpassoword2" placeholder="Enter Confirm Password" />
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Form.Row>
+                            <CardHeader title="SIGN UP" style={{ textAlign: 'center', 'fontWeight': 'bold' }} />
+                            <CardContent>
+                                <form noValidate>
+                                    <TextField variant="outlined" margin="normal"
+                                        required
+                                        fullWidth
+                                        id="firstName"
+                                        label="First Name"
+                                        name="firstName"
+                                        autoComplete="off"
+                                        type="text"
+                                    />
+                                    <TextField variant="outlined" margin="normal"
+                                        fullWidth
+                                        id="lastName"
+                                        label="Last Name"
+                                        name="lastName"
+                                        autoComplete="off"
+                                        type="text"
+                                    />
+                                    <TextField variant="outlined" margin="normal"
+                                        required
+                                        fullWidth
+                                        id="email"
+                                        label="Email Address"
+                                        name="email2"
+                                        autoComplete="off"
+                                        type="email"
+                                    />
+                                    <TextField
+                                        variant="outlined"
+                                        margin="normal"
+                                        required
+                                        fullWidth
+                                        name="password1"
+                                        label="Password"
+                                        type="password"
+                                        id="password1"
+                                        autoComplete="current-password1"
+                                    />
+                                    <TextField
+                                        variant="outlined"
+                                        margin="normal"
+                                        required
+                                        fullWidth
+                                        name="password2"
+                                        label="Confirm Password"
+                                        type="password"
+                                        id="password2"
+                                        autoComplete="current-password2"
+                                    />
                                     <p>Already have an account? click <a href="#" onClick={this.showLoginDiv.bind(this)}>here</a> to login.</p>
-                                </Form>
-                            </Card.Body>
-                            <Card.Footer style={{ "text-align": "right" }}>
-                                <Button size="sm" type="button" variant="primary"> SIGN UP </Button>
-                            </Card.Footer>
+                                </form>
+                                <MyButton
+                                    fullWidth
+                                    type="submit"
+                                    variant="contained"
+                                    color="primary"
+                                >
+                                    SIGN UP
+                            </MyButton>
+                            </CardContent>
                         </Card>
                     </div> : null}
             </div>
