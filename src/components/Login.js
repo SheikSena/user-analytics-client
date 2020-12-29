@@ -63,10 +63,11 @@ class Login extends Component {
 
         return (
             <div className="col d-flex justify-content-center" style={{ backgroundColor: 'white', height: '100%', paddingTop: '70px' }}>
-                {displayLoginDiv ? <div style={{ height: '50%', width: '30%' }}>
+                {displayLoginDiv ? <div style={{ height: '50%' }}>
                     {error && <Alert variant="danger"> {error}</Alert>}
                     <Grid>
-                        <Grid justify="center">
+                        <Grid justify="space-between"
+                            alignItems="center">
                             <Card >
                                 <CardHeader title="LOGIN" style={{ textAlign: 'center', 'fontWeight': 'bold' }} />
                                 <CardContent>
@@ -111,71 +112,76 @@ class Login extends Component {
                     </Grid>
                 </div> : null}
                 {displayRegDiv ?
-                    <div style={{ height: '50%', width: '25%' }}>
-                        <Card >
-                            <CardHeader title="SIGN UP" style={{ textAlign: 'center', 'fontWeight': 'bold' }} />
-                            <CardContent>
-                                <form noValidate>
-                                    <TextField variant="outlined" margin="normal"
-                                        required
-                                        fullWidth
-                                        id="firstName"
-                                        label="First Name"
-                                        name="firstName"
-                                        autoComplete="off"
-                                        type="text"
-                                    />
-                                    <TextField variant="outlined" margin="normal"
-                                        fullWidth
-                                        id="lastName"
-                                        label="Last Name"
-                                        name="lastName"
-                                        autoComplete="off"
-                                        type="text"
-                                    />
-                                    <TextField variant="outlined" margin="normal"
-                                        required
-                                        fullWidth
-                                        id="email"
-                                        label="Email Address"
-                                        name="email2"
-                                        autoComplete="off"
-                                        type="email"
-                                    />
-                                    <TextField
-                                        variant="outlined"
-                                        margin="normal"
-                                        required
-                                        fullWidth
-                                        name="password1"
-                                        label="Password"
-                                        type="password"
-                                        id="password1"
-                                        autoComplete="current-password1"
-                                    />
-                                    <TextField
-                                        variant="outlined"
-                                        margin="normal"
-                                        required
-                                        fullWidth
-                                        name="password2"
-                                        label="Confirm Password"
-                                        type="password"
-                                        id="password2"
-                                        autoComplete="current-password2"
-                                    />
-                                    <p>Already have an account? click <a href="#" onClick={this.showLoginDiv.bind(this)}>here</a> to login.</p>
-                                </form>
-                                <MyButton
-                                    fullWidth
-                                    type="submit"
-                                    variant="contained"
-                                    color="primary"
-                                >
-                                    SIGN UP
+                    <div style={{ height: '50%' }}>
+                        <Grid>
+                            <Grid justify="space-between"
+                                alignItems="center" >
+                                <Card >
+                                    <CardHeader title="SIGN UP" style={{ textAlign: 'center', 'fontWeight': 'bold' }} />
+                                    <CardContent>
+                                        <form noValidate>
+                                            <TextField variant="outlined" margin="normal"
+                                                required
+                                                fullWidth
+                                                id="firstName"
+                                                label="First Name"
+                                                name="firstName"
+                                                autoComplete="off"
+                                                type="text"
+                                            />
+                                            <TextField variant="outlined" margin="normal"
+                                                fullWidth
+                                                id="lastName"
+                                                label="Last Name"
+                                                name="lastName"
+                                                autoComplete="off"
+                                                type="text"
+                                            />
+                                            <TextField variant="outlined" margin="normal"
+                                                required
+                                                fullWidth
+                                                id="email"
+                                                label="Email Address"
+                                                name="email2"
+                                                autoComplete="off"
+                                                type="email"
+                                            />
+                                            <TextField
+                                                variant="outlined"
+                                                margin="normal"
+                                                required
+                                                fullWidth
+                                                name="password1"
+                                                label="Password"
+                                                type="password"
+                                                id="password1"
+                                                autoComplete="current-password1"
+                                            />
+                                            <TextField
+                                                variant="outlined"
+                                                margin="normal"
+                                                required
+                                                fullWidth
+                                                name="password2"
+                                                label="Confirm Password"
+                                                type="password"
+                                                id="password2"
+                                                autoComplete="current-password2"
+                                            />
+                                            <p>Already have an account? click <a href="#" onClick={this.showLoginDiv.bind(this)}>here</a> to login.</p>
+                                        </form>
+                                        <MyButton
+                                            fullWidth
+                                            type="submit"
+                                            variant="contained"
+                                            color="primary"
+                                        >
+                                            SIGN UP
                             </MyButton>
-                            </CardContent>
-                        </Card>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        </Grid>
                     </div> : null}
             </div>
         );

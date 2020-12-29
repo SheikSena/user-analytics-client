@@ -3,19 +3,21 @@ import { createMuiTheme } from '@material-ui/core/styles';
 // A custom theme for this app
 const theme = createMuiTheme({
     palette: {
-        type: 'light',
+        type: 'dark',
         primary: {
             main: '#2196f3',
-            light: '#61dafb',
-            dark: '#21a1c4',
+            light: '#4dabf5',
+            dark: '#1769aa',
         },
         secondary: {
             main: '#f50057',
-            light: '#61dafb',
-            dark: '#21a1c4',
+            light: '#f73378',
+            dark: '#ab003c',
         },
         error: {
-            main: red.A400,
+            main: '#f44336',
+            light: '#e57373',
+            dark: '#d32f2f',
         },
         background: {
             default: '#282c34',

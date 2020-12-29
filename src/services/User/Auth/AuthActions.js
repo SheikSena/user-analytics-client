@@ -4,7 +4,7 @@ import getHistory from 'react-router-global-history';
 export const authenticateUser = (email, password) => {
     return (dispatch) => {
         dispatch(loginRequest());
-        if (email === "test" && password === "test") {
+        if (email === "test" && password === "test987456321") {
             dispatch(success(true));
             getHistory().push('/dashboard');
         } else {
