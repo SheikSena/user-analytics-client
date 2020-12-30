@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { authenticateUser } from '../services/User/Auth/AuthActions'
 import TextField from '@material-ui/core/TextField';
 import { styled } from '@material-ui/core/styles';
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 
 const MyButton = styled(Button)({
     background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
@@ -37,7 +38,7 @@ class Login extends Component {
     }
 
     initialState = {
-        email: '', password: '', error: '', displayLoginDiv: true, displayRegDiv: false
+        email: '', password: '', error: '', displayLoginDiv: true, displayRegDiv: false, loginButtonDisabled: false
     }
 
     handleChange = event => {
@@ -47,14 +48,17 @@ class Login extends Component {
     }
 
     validateUser = () => {
+        this.setState({
+            loginButtonDisabled: true
+        })
         this.props.authenticateUser(this.state.email, this.state.password);
         setTimeout(() => {
             if (this.props.auth.isLoggedIn) {
                 return this.props.history.push("/dashboard")
             } else {
-                this.setState({ "error": "Invalid Email and Password" })
+                this.setState({ "error": " Invalid Email and Password", loginButtonDisabled: false })
             }
-        }, 500);
+        }, 1000);
     }
 
     showLoginDiv() {
@@ -76,10 +80,10 @@ class Login extends Component {
         return (
             <div className="col d-flex justify-content-center" style={{ backgroundColor: 'white', height: '100%', paddingTop: '70px' }}>
                 {displayLoginDiv ? <div style={{ height: '50%' }}>
-                    {error && <Alert variant="danger"> {error}</Alert>}
                     <Container component="main" maxWidth="xs">
                         <Typography component="h1" variant="h5" align='center'>LOGIN</Typography>
                         <br></br>
+                        {error && <Alert variant="danger"> <ErrorOutlineIcon /> {error}</Alert>}
                         <form noValidate>
                             <Grid container spacing={0}>
                                 <Grid item xs={12}>
@@ -116,7 +120,7 @@ class Login extends Component {
                             </Grid>
                         </form>
                         <br></br>
-                        <MyButton fullWidth onClick={this.validateUser}>  LOGIN</MyButton >
+                        <MyButton fullWidth onClick={this.validateUser} disabled={this.state.loginButtonDisabled}>  LOGIN</MyButton >
                         <Box mt={5}>
                             <br></br>
                             <Copyright />
