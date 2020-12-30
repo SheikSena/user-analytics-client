@@ -89,7 +89,7 @@ class Login extends Component {
         if (this.state.fnameError.length > 0 || this.state.email1Error.length > 0 || this.state.passwordError.length > 0) {
             // this.setState({ "error": "Please Enter Valid Form Values and Try Again", loginButtonDisabled: false })
             event.preventDefault();
-        } else if (this.state.fname.trim().length === 0 || this.state.email1.trim().length || this.state.password1.trim().length) {
+        } else if (this.state.fname.trim().length === 0 || this.state.email1.trim().length === 0 || this.state.password1.trim().length === 0) {
             this.setState({ "error": "Please Enter Required Fields and Try Again", loginButtonDisabled: false })
             event.preventDefault();
         }
