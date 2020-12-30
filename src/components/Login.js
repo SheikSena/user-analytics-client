@@ -184,7 +184,6 @@ class Login extends Component {
                             <MyButton fullWidth>SIGN UP</MyButton>
                             <Box mt={5}>
                                 <br></br>
-
                                 <Copyright />
                             </Box>
                         </Container>
