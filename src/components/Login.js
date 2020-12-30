@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import { Grid, Button, Container, Typography, Link, Box } from '@material-ui/core'
-import { Alert } from 'react-bootstrap'
+import { Alert, Toast } from 'react-bootstrap'
 import { connect } from 'react-redux';
 import { authenticateUser } from '../services/User/Auth/AuthActions'
 import TextField from '@material-ui/core/TextField';
@@ -38,7 +38,7 @@ class Login extends Component {
     }
 
     initialState = {
-        email: '', password: '', error: '', displayLoginDiv: true, displayRegDiv: false, loginButtonDisabled: false
+        email: '', password: '', error: '', displayLoginDiv: true, displayRegDiv: false, loginButtonDisabled: false, open: false, toastHeader: '', toastMessage: ''
     }
 
     handleChange = event => {
@@ -48,8 +48,12 @@ class Login extends Component {
     }
 
     validateUser = () => {
+        if (this.state.email.length === 0 || this.state.password.length === 0) {
+            this.setState({ open: true, toastHeader: 'ERROR', toastMessage: 'Please Enter Email Address and Password' })
+            return;
+        }
         this.setState({
-            loginButtonDisabled: true
+            loginButtonDisabled: true,
         })
         this.props.authenticateUser(this.state.email, this.state.password);
         setTimeout(() => {
@@ -68,6 +72,12 @@ class Login extends Component {
         })
     }
 
+    closeToaster() {
+        this.setState({
+            open: false
+        })
+    }
+
     showRegDiv() {
         this.setState({
             displayLoginDiv: false,
@@ -76,7 +86,7 @@ class Login extends Component {
     }
 
     render() {
-        const { email, password, error, displayLoginDiv, displayRegDiv } = this.state;
+        const { email, password, error, displayLoginDiv, displayRegDiv, open, toastHeader, toastMessage } = this.state;
         return (
             <div className="col d-flex justify-content-center" style={{ backgroundColor: 'white', height: '100%', paddingTop: '70px' }}>
                 {displayLoginDiv ? <div style={{ height: '50%' }}>
@@ -192,6 +202,14 @@ class Login extends Component {
                             </Box>
                         </Container>
                     </div> : null}
+                <div style={{ position: 'absolute', top: 60, right: 14 }}>
+                    <Toast show={open} autohide delay={5000} onClose={this.closeToaster.bind(this)} closeButton>
+                        <Toast.Header style={{ backgroundColor: '#ef5350' }}>
+                            <Typography variant="body1" style={{ color: 'black' }}><ErrorOutlineIcon /> &nbsp; {toastHeader}</Typography> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </Toast.Header>
+                        <Toast.Body> <Typography variant="body3" style={{ color: 'black' }}>{toastMessage}</Typography></Toast.Body>
+                    </Toast>
+                </div>
             </div>
         );
     }
