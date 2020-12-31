@@ -1,13 +1,9 @@
 import { LOGIN_REQUEST, SUCCESS, FAILURE, LOGOUT_REQUEST } from './AuthTypes'
 import { PURGE } from "redux-persist";
+import Axios from "axios";
 
 const initialState = {
-    userInformation: {
-        'firstName': '',
-        'lastName': '',
-        'userName': '',
-        'token': ''
-    },
+    userInformation: null,
     isLoggedIn: ''
 }
 
@@ -22,9 +18,9 @@ const reducer = (state = initialState, action) => {
                 ...state
             };
         case SUCCESS:
-            return {
-                isLoggedIn: action.payload
-            };
+            var data = { isLoggedIn: action.payload }
+            Axios.defaults.headers.common['Authorization'] = 'Bearer ' + action.payload.userInformation.token;
+            return data;
         case FAILURE:
             return {
                 isLoggedIn: action.payload

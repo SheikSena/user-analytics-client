@@ -28,7 +28,9 @@ export const authenticateUser = (email, password) => {
                             'firstName': decodedToken.firstName,
                             'lastName': decodedToken.lastName,
                             'userName': decodedToken.sub,
-                            'token': response.data.token
+                            'token': response.data.token,
+                            'userId': decodedToken.id,
+                            'tokenExpiration': new Date(decodedToken.exp * 1000).toLocaleString()
                         }
                     }
                     dispatch(success(payLoadData));
