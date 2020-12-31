@@ -2,6 +2,12 @@ import { LOGIN_REQUEST, SUCCESS, FAILURE, LOGOUT_REQUEST } from './AuthTypes'
 import { PURGE } from "redux-persist";
 
 const initialState = {
+    userInformation: {
+        'firstName': '',
+        'lastName': '',
+        'userName': '',
+        'token': ''
+    },
     isLoggedIn: ''
 }
 

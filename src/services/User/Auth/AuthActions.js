@@ -22,8 +22,16 @@ export const authenticateUser = (email, password) => {
             .then(response => {
                 if (response.status === 200) {
                     var decodedToken = jwt_decode(response.data.token);
-                    console.log(decodedToken)
-                    dispatch(success(true));
+                    var payLoadData = {
+                        isLoggedIn: true,
+                        userInformation: {
+                            'firstName': decodedToken.firstName,
+                            'lastName': decodedToken.lastName,
+                            'userName': decodedToken.sub,
+                            'token': response.data.token
+                        }
+                    }
+                    dispatch(success(payLoadData));
                     getHistory().push('/dashboard');
                 } else {
                     dispatch(failure());
@@ -38,10 +46,10 @@ const loginRequest = () => {
     };
 };
 
-const success = (isLoggedIn) => {
+const success = (data) => {
     return {
         type: SUCCESS,
-        payload: isLoggedIn
+        payload: data,
     };
 };
 

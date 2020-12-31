@@ -26,7 +26,7 @@ class Header extends Component {
             <>
                 <Nav>
                     <Nav.Link href="" style={{ color: "white" }}><Badge badgeContent={4} color="primary"><NotificationsIcon /></Badge></Nav.Link>
-                    <NavDropdown title="WELCOME, SHEIK SENA REDDY" id="basic-nav-dropdown">
+                    <NavDropdown title={this.props.auth.isLoggedIn ? "Hello, " + this.props.auth.isLoggedIn.userInformation.firstName : null} id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1"><PersonFill /> Profile</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.2"><GearFill /> Settings</NavDropdown.Item>
                         <NavDropdown.Divider />
@@ -73,7 +73,6 @@ const mapStateToProps = state => {
         auth: state.auth
     }
 };
-
 
 const mapDispatchToProps = dispatch => {
     return {
