@@ -3,18 +3,23 @@ import getHistory from 'react-router-global-history';
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
 
-// const API_URL = "http://localhost:8080/user/";
-// const AUTHENTICATE_URL = "http://localhost:8080/authenticate"
 
-const AUTHENTICATE_URL = "https://user-analytics-server.herokuapp.com/authenticate"
-// const API_URL = "http://localhost:8080/api/auth/";
+const getEndpointURL = () => {
+    var location = window.location.href;
+    if (location.includes("localhost:30")) {
+        return "http://localhost:8080/"
+    } else if (location.includes("user-analytics")) {
+        return "https://user-analytics-server.herokuapp.com/"
+    } else {
+        alert("SomeThing Went Wrong, Please Try Again")
+    }
+}
 
 export const authenticateUser = (email, password) => {
     return (dispatch) => {
         dispatch(loginRequest());
-        Axios.post(AUTHENTICATE_URL, { "username": email, "password": password })
+        Axios.post(getEndpointURL() + "authenticate", { "username": email, "password": password })
             .then(response => {
-                console.log(response)
                 if (response.status === 200) {
                     var decodedToken = jwt_decode(response.data.token);
                     console.log(decodedToken)
