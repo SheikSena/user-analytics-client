@@ -109,7 +109,7 @@ class Login extends Component {
             if (!this.props.auth.isLoggedIn) {
                 this.setState({ "error": " Invalid Email and Password", loginButtonDisabled: false })
             }
-        }, 5000);
+        }, 10000);
     }
 
     showLoginDiv() {
