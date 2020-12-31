@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import { Grid, Button, Container, Typography, Link, Box, TextField, styled } from '@material-ui/core'
-import { Alert, Toast } from 'react-bootstrap'
+import { Alert, Toast, Spinner } from 'react-bootstrap'
 import { connect } from 'react-redux';
 import { authenticateUser } from '../services/User/Auth/AuthActions'
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
@@ -106,12 +106,10 @@ class Login extends Component {
         })
         this.props.authenticateUser(this.state.email, this.state.password);
         setTimeout(() => {
-            if (this.props.auth.isLoggedIn) {
-                return this.props.history.push("/dashboard")
-            } else {
+            if (!this.props.auth.isLoggedIn) {
                 this.setState({ "error": " Invalid Email and Password", loginButtonDisabled: false })
             }
-        }, 1000);
+        }, 5000);
     }
 
     showLoginDiv() {
@@ -181,7 +179,12 @@ class Login extends Component {
                             </Grid>
                         </form>
                         <br></br>
-                        <MyButton fullWidth onClick={this.validateUser} disabled={this.state.loginButtonDisabled}>  LOGIN</MyButton >
+                        <MyButton fullWidth onClick={this.validateUser} disabled={this.state.loginButtonDisabled}>  LOGIN  &nbsp; {this.state.loginButtonDisabled ? <Spinner as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true" />
+                            : null}</MyButton >
                         <Box mt={5}>
                             <br></br>
                             <Copyright />
