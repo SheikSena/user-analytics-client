@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, SUCCESS, FAILURE, LOGOUT_REQUEST } from './AuthTypes'
+import { LOGIN_REQUEST, SUCCESS, FAILURE, LOGOUT_REQUEST, PAGE_LOAD } from './AuthTypes'
 import getHistory from 'react-router-global-history';
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
@@ -43,6 +43,12 @@ export const authenticateUser = (email, password) => {
                 dispatch(failure('Invalid Email Address and Password'));
             }
         }
+    }
+}
+
+export const onPageLoad = () => {
+    return {
+        type: PAGE_LOAD
     }
 }
 

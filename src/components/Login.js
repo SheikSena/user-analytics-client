@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Grid, Button, Container, Typography, Link, Box, TextField, styled } from '@material-ui/core'
 import { Alert, Toast, Spinner } from 'react-bootstrap'
 import { connect } from 'react-redux';
-import { authenticateUser } from '../services/User/Auth/AuthActions'
+import { authenticateUser, onPageLoad } from '../services/User/Auth/AuthActions'
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 
 const MyButton = styled(Button)({
@@ -21,7 +21,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://user-analytics.vercel.app/">
-                User Aanalytics
+                User Analytics
         </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -49,6 +49,10 @@ class Login extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
+    }
+
+    componentDidMount() {
+        this.props.onPageLoad()
     }
 
     handleSignup = event => {
@@ -274,7 +278,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        authenticateUser: (email, password) => dispatch(authenticateUser(email, password))
+        authenticateUser: (email, password) => dispatch(authenticateUser(email, password)),
+        onPageLoad: () => dispatch(onPageLoad())
     };
 };
 

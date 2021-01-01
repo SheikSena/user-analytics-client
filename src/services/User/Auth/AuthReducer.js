@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, SUCCESS, FAILURE, LOGOUT_REQUEST } from './AuthTypes'
+import { LOGIN_REQUEST, SUCCESS, FAILURE, LOGOUT_REQUEST, PAGE_LOAD } from './AuthTypes'
 import { PURGE } from "redux-persist";
 import Axios from "axios";
 
@@ -32,6 +32,11 @@ const reducer = (state = initialState, action) => {
             };
         case PURGE:
             return initialState;
+        case PAGE_LOAD:
+            return {
+                error: '',
+                buttonDiabled: false
+            };
         default:
             return state;
     }
