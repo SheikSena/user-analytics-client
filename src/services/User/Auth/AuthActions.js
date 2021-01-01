@@ -18,6 +18,10 @@ export const authenticateUser = (email, password) => {
     return async (dispatch) => {
         try {
             dispatch(loginRequest());
+            if (email.trim().length === 0 || password.trim().length === 0) {
+                dispatch(failure('Please Enter Required Fields and Try Again'));
+                return;
+            }
             const responseData = await Axios.post(getEndpointURL() + "authenticate", { "username": email, "password": password })
             const decodedToken = jwt_decode(responseData.data.token);
             var payLoadData = {

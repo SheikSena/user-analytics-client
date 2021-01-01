@@ -96,11 +96,6 @@ class Login extends Component {
     }
 
     validateUser = () => {
-        if (this.state.email.length === 0 || this.state.password.length === 0) {
-            // this.setState({ open: true, toastHeader: 'ERROR', toastMessage: 'Please Enter Email Address and Password' })
-            this.setState({ "error": "Please Enter Required Fields and Try Again", loginButtonDisabled: false })
-            return;
-        }
         this.props.authenticateUser(this.state.email, this.state.password);
     }
 
