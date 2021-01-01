@@ -101,15 +101,7 @@ class Login extends Component {
             this.setState({ "error": "Please Enter Required Fields and Try Again", loginButtonDisabled: false })
             return;
         }
-        this.setState({
-            loginButtonDisabled: true,
-        })
         this.props.authenticateUser(this.state.email, this.state.password);
-        setTimeout(() => {
-            if (!this.props.auth.isLoggedIn) {
-                this.setState({ "error": " Invalid Email and Password", loginButtonDisabled: false })
-            }
-        }, 10000);
     }
 
     showLoginDiv() {
@@ -142,7 +134,7 @@ class Login extends Component {
                     <Container component="main" maxWidth="xs">
                         <Typography component="h1" variant="h5" align='center'>LOGIN</Typography>
                         <br></br>
-                        {error && <Alert variant="danger"> <ErrorOutlineIcon /> {error}</Alert>}
+                        {this.props.auth.error && <Alert variant="danger"> <ErrorOutlineIcon /> {this.props.auth.error}</Alert>}
                         <form noValidate>
                             <Grid container spacing={0}>
                                 <Grid item xs={12}>
@@ -179,7 +171,7 @@ class Login extends Component {
                             </Grid>
                         </form>
                         <br></br>
-                        <MyButton fullWidth onClick={this.validateUser} disabled={this.state.loginButtonDisabled}>  LOGIN  &nbsp; {this.state.loginButtonDisabled ? <Spinner as="span"
+                        <MyButton fullWidth onClick={this.validateUser} disabled={this.props.auth.buttonDiabled}>  LOGIN  &nbsp; {this.props.auth.buttonDiabled ? <Spinner as="span"
                             animation="border"
                             size="sm"
                             role="status"

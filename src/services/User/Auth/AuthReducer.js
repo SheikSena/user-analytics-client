@@ -4,14 +4,17 @@ import Axios from "axios";
 
 const initialState = {
     userInformation: null,
-    isLoggedIn: ''
+    isLoggedIn: false,
+    error: '',
+    buttonDiabled: false
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_REQUEST:
             return {
-                ...state
+                buttonDiabled: true,
+                error: ''
             };
         case LOGOUT_REQUEST:
             return {
@@ -23,7 +26,9 @@ const reducer = (state = initialState, action) => {
             return data;
         case FAILURE:
             return {
-                isLoggedIn: action.payload
+                isLoggedIn: false,
+                error: action.payload,
+                buttonDiabled: false
             };
         case PURGE:
             return initialState;

@@ -3,7 +3,6 @@ import getHistory from 'react-router-global-history';
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
 
-
 const getEndpointURL = () => {
     var location = window.location.href;
     if (location.includes("localhost:30")) {
@@ -16,29 +15,30 @@ const getEndpointURL = () => {
 }
 
 export const authenticateUser = (email, password) => {
-    return (dispatch) => {
-        dispatch(loginRequest());
-        Axios.post(getEndpointURL() + "authenticate", { "username": email, "password": password })
-            .then(response => {
-                if (response.status === 200) {
-                    var decodedToken = jwt_decode(response.data.token);
-                    var payLoadData = {
-                        isLoggedIn: true,
-                        userInformation: {
-                            'firstName': decodedToken.firstName,
-                            'lastName': decodedToken.lastName,
-                            'userName': decodedToken.sub,
-                            'token': response.data.token,
-                            'userId': decodedToken.id,
-                            'tokenExpiration': new Date(decodedToken.exp * 1000).toLocaleString()
-                        }
-                    }
-                    dispatch(success(payLoadData));
-                    getHistory().push('/dashboard');
-                } else {
-                    dispatch(failure());
-                }
-            })
+    return async (dispatch) => {
+        try {
+            dispatch(loginRequest());
+            const responseData = await Axios.post(getEndpointURL() + "authenticate", { "username": email, "password": password })
+            const decodedToken = jwt_decode(responseData.data.token);
+            var payLoadData = {
+                isLoggedIn: true,
+                userInformation: {
+                    'firstName': decodedToken.firstName,
+                    'lastName': decodedToken.lastName,
+                    'userName': decodedToken.sub,
+                    'token': responseData.data.token,
+                    'userId': decodedToken.id,
+                    'tokenExpiration': new Date(decodedToken.exp * 1000).toLocaleString()
+                },
+                error: ''
+            }
+            dispatch(success(payLoadData));
+            getHistory().push('/dashboard');
+        } catch (error) {
+            if (error.response) {
+                dispatch(failure('Invalid Email Address and Password'));
+            }
+        }
     }
 }
 
@@ -55,10 +55,10 @@ const success = (data) => {
     };
 };
 
-const failure = () => {
+const failure = (errorMessage) => {
     return {
         type: FAILURE,
-        payload: false
+        payload: errorMessage
     };
 };
 
