@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Grid, Button, Container, Typography, Link, Box, TextField, styled } from '@material-ui/core'
 import { Alert, Toast, Spinner } from 'react-bootstrap'
 import { connect } from 'react-redux';
-import { authenticateUser, onPageLoad } from '../services/User/Auth/AuthActions'
+import { authenticateUser, onPageLoad, registerUser } from '../services/User/Auth/AuthActions'
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 
 const MyButton = styled(Button)({
@@ -89,14 +89,11 @@ class Login extends Component {
         }
     }
 
-    signUp = (event) => {
+    signUp = () => {
         if (this.state.fnameError.length > 0 || this.state.email1Error.length > 0 || this.state.passwordError.length > 0) {
-            // this.setState({ "error": "Please Enter Valid Form Values and Try Again", loginButtonDisabled: false })
-            event.preventDefault();
-        } else if (this.state.fname.trim().length === 0 || this.state.email1.trim().length === 0 || this.state.password1.trim().length === 0) {
-            this.setState({ "error": "Please Enter Required Fields and Try Again", loginButtonDisabled: false })
-            event.preventDefault();
+            return;
         }
+        this.props.registerUser(this.state.fname, this.state.lname, this.state.email1, this.state.password1)
     }
 
     validateUser = () => {
@@ -126,7 +123,7 @@ class Login extends Component {
     }
 
     render() {
-        const { email, password, error, displayLoginDiv, displayRegDiv, open, toastHeader, toastMessage } = this.state;
+        const { email, password, displayLoginDiv, displayRegDiv, open, toastHeader, toastMessage } = this.state;
         return (
             <div className="col d-flex justify-content-center" style={{ backgroundColor: 'white', height: '100%', paddingTop: '70px' }}>
                 {displayLoginDiv ? <div style={{ height: '50%' }}>
@@ -187,8 +184,8 @@ class Login extends Component {
                         <Container component="main" maxWidth="xs">
                             <Typography component="h1" variant="h5" align='center'>SIGN UP</Typography>
                             <br></br>
-                            {error && <Alert variant="danger"> <ErrorOutlineIcon /> {error}</Alert>}
-                            <form noValidate onSubmit={this.signUp.bind(this)}>
+                            {this.props.auth.error && <Alert variant="danger"> <ErrorOutlineIcon /> {this.props.auth.error}</Alert>}
+                            <form noValidate>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>
                                         <TextField
@@ -249,8 +246,8 @@ class Login extends Component {
                                     </Grid>
                                 </Grid>
                                 <br></br>
-                                <MyButton type="submit" fullWidth>SIGN UP</MyButton>
                             </form>
+                            <MyButton type="submit" fullWidth onClick={this.signUp.bind(this)}>SIGN UP</MyButton>
                             <Box mt={5}>
                                 <br></br>
                                 <Copyright />
@@ -279,7 +276,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         authenticateUser: (email, password) => dispatch(authenticateUser(email, password)),
-        onPageLoad: () => dispatch(onPageLoad())
+        onPageLoad: () => dispatch(onPageLoad()),
+        registerUser: (fname, lname, email1, password1) => dispatch(registerUser(fname, lname, email1, password1))
     };
 };
 

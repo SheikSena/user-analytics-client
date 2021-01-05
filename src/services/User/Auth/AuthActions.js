@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, SUCCESS, FAILURE, LOGOUT_REQUEST, PAGE_LOAD } from './AuthTypes'
+import { LOGIN_REQUEST, SUCCESS, FAILURE, LOGOUT_REQUEST, PAGE_LOAD, SIGNUP_REQUEST } from './AuthTypes'
 import getHistory from 'react-router-global-history';
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
@@ -46,6 +46,30 @@ export const authenticateUser = (email, password) => {
     }
 }
 
+export const registerUser = (firstName, lastName, email, password) => {
+    return async (dispatch) => {
+        try {
+            dispatch(signupRequest());
+            if (firstName.trim().length === 0 || email.trim().length === 0 || password.trim().length === 0) {
+                dispatch(failure('Please Enter Required Fields and Try Again'));
+                return;
+            }
+            const responseData = await Axios.post(getEndpointURL() + "user/createUser",
+                {
+                    "userName": email,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "password": password
+                })
+            dispatch(success(responseData));
+        } catch (error) {
+            if (error.response) {
+                dispatch(failure('Invalid Email Address and Password'));
+            }
+        }
+    }
+}
+
 export const onPageLoad = () => {
     return {
         type: PAGE_LOAD
@@ -57,6 +81,12 @@ const loginRequest = () => {
         type: LOGIN_REQUEST
     };
 };
+
+const signupRequest = () => {
+    return {
+        type: SIGNUP_REQUEST
+    }
+}
 
 const success = (data) => {
     return {

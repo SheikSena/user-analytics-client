@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, SUCCESS, FAILURE, LOGOUT_REQUEST, PAGE_LOAD } from './AuthTypes'
+import { LOGIN_REQUEST, SUCCESS, FAILURE, LOGOUT_REQUEST, PAGE_LOAD, SIGNUP_REQUEST } from './AuthTypes'
 import { PURGE } from "redux-persist";
 import Axios from "axios";
 
@@ -37,6 +37,8 @@ const reducer = (state = initialState, action) => {
                 error: '',
                 buttonDiabled: false
             };
+        case SIGNUP_REQUEST:
+            return { isLoggedIn: action.payload, message: "Successfully Registered, Please Login In To Your Account" };
         default:
             return state;
     }
