@@ -58,7 +58,6 @@ function BeerRecipes() {
         pagination: true,
         rowsPerPage: 100,
         rowsPerPageOptions: [100, 200, 300],
-        jumpToPage: true,
     };
 
     return (
