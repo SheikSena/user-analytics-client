@@ -77,7 +77,6 @@ export default function Dashboard() {
                     </Card>
                 </Grid>
             </Grid>
-            <br></br>
             <BeerRecipes />
         </div>
     );
